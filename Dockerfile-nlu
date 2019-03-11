@@ -1,0 +1,12 @@
+FROM rasa/rasa_nlu:0.13.7-full
+
+EXPOSE 5000
+
+WORKDIR /app
+
+COPY train.md /app
+
+
+COPY config.yml /app
+
+RUN python3 -m rasa_nlu.train  -c /app/config.yml  --data /app/train.md -o projects --fixed_model_name nlu --project test --verbose

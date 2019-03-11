@@ -1,0 +1,32 @@
+slots:
+  customerid:
+    type: text
+
+entities:
+- customerid
+
+intents:
+  - greet
+  - thankyou
+  - unsubscribe
+  - getit
+
+actions:
+  - utter_default
+  - utter_greet
+  - utter_thankyou
+  - unsubscribe
+  - utter_ask_id
+
+templates:
+  utter_greet:
+    - text: "hello ,how can I help you ?"
+    - text: "hey "
+  utter_thankyou:
+    - text: "no problem"
+    - text: "you are welcome"
+  utter_ask_id:
+    - text: "Could you please provide your customer id ?"
+    - text: "Please provide your customer id ."
+  utter_default:
+    - "Sorry , I did not understand that ."

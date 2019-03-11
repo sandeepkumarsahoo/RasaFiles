@@ -1,0 +1,17 @@
+FROM python:3.6
+
+WORKDIR /app
+
+run pip install rasa_core
+
+EXPOSE 5005
+
+COPY stories.md /app
+COPY domain.yml /app
+COPY endpoints.yml /app
+
+
+RUN python -m rasa_core.train -d domain.yml -s stories.md -o models/dialogue
+
+CMD python -m rasa_core.run -d models/dialogue -u test/nlu --endpoints endpoints.yml --enable_api -c rest --cors '*'
+
